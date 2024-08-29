@@ -2,23 +2,31 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const ws = `{
+  'title' 'Test'
+  'description' 'Dashboard test'
+  'tiles' [ 
+    {
+      'title' 'test' 
+      'options' { 'autoRefresh' 1 }
+      'x' 0 'y' 0 'w' 12 'h' 4
+      'type' 'area'
+      'macro' <%
+        1 4 <%
+          DROP NEWGTS 'g' STORE
+          1 10 <%
+            'ts' STORE $g $ts RAND + STU * NOW + NaN NaN NaN RAND ADDVALUE DROP
+          %> FOR
+          $g
+        %> FOR
+      %>
+    }
+  ]
+}`
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <discovery-dashboard url="https://sandbox.senx.io/api/v0/exec" dashboard-title="Test">{ws}</discovery-dashboard>
   );
 }
 
