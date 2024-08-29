@@ -1,5 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
+
+import "@senx/discovery-widgets/dist/discovery/discovery.esm.js"
 
 function App() {
 
